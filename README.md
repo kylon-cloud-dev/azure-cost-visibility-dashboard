@@ -85,7 +85,8 @@ cost-dashboard-001/
 ├── main.tf
 ├── variables.tf
 ├── outputs.tf
-├── terraform.tfvars is used locally but excluded from GitHub using .gitignore.
+├──terraform.tfvars.example
+└──  terraform.tfvars is used locally but excluded from GitHub using .gitignore.
 ├── README.md
 └── screenshots/
     ├── 01-vscode-project-files.png
@@ -110,7 +111,6 @@ This screenshot should show the project folder with:
 - `main.tf`
 - `variables.tf`
 - `outputs.tf`
-- `terraform.tfvars`
 
 Do not expose sensitive values inside `terraform.tfvars`.
 
