@@ -85,8 +85,7 @@ cost-dashboard-001/
 ├── main.tf
 ├── variables.tf
 ├── outputs.tf
-├──terraform.tfvars.example
-└──  terraform.tfvars is used locally but excluded from GitHub using .gitignore.
+├── terraform.tfvars.example
 ├── README.md
 └── screenshots/
     ├── 01-vscode-project-files.png
@@ -97,6 +96,8 @@ cost-dashboard-001/
     ├── 06-logic-app-designer.png
     ├── 07-workbook-dashboard.png
 ```
+
+`terraform.tfvars` was used locally for deployment values but is excluded from GitHub using `.gitignore`.
 
 ## Screenshot Evidence
 
@@ -111,6 +112,7 @@ This screenshot should show the project folder with:
 - `main.tf`
 - `variables.tf`
 - `outputs.tf`
+- `terraform.tfvars.example`
 
 Do not expose sensitive values inside `terraform.tfvars`.
 
@@ -182,6 +184,7 @@ The workbook should show the Resource Graph query output with the deployed resou
 rg-cost-dashboard-kylon
 eastus
 ```
+
 
 ## Implementation Steps
 
@@ -385,8 +388,8 @@ az monitor action-group update \
   --name ag-cost-alerts-kylon \
   --resource-group rg-cost-dashboard-kylon \
   --add-action logicapp la-webhook \
-  "/subscriptions/SUBSCRIPTION_ID/resourceGroups/rg-cost-dashboard-kylon/providers/Microsoft.Logic/workflows/la-cost-alert-kylon" \
-  "LOGIC_APP_CALLBACK_URL"
+  "/subscriptions/<subscription-id>/resourceGroups/rg-cost-dashboard-kylon/providers/Microsoft.Logic/workflows/la-cost-alert-kylon" \
+  "<logic-app-callback-url>"
 ```
 
 Verification command:
@@ -404,7 +407,7 @@ Expected output includes:
 [
   {
     "name": "la-webhook",
-    "resourceId": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/rg-cost-dashboard-kylon/providers/Microsoft.Logic/workflows/la-cost-alert-kylon"
+    "resourceId": "/subscriptions/<subscription-id>/resourceGroups/rg-cost-dashboard-kylon/providers/Microsoft.Logic/workflows/la-cost-alert-kylon"
   }
 ]
 ```
@@ -529,7 +532,7 @@ A resource with the ID already exists
 Resolution:
 
 ```bash
-terraform import azurerm_monitor_diagnostic_setting.subscription_logs "/subscriptions/SUBSCRIPTION_ID|diag-sub-to-law"
+terraform import azurerm_monitor_diagnostic_setting.subscription_logs "/subscriptions/<subscription-id>|diag-sub-to-law"
 terraform plan
 ```
 
@@ -567,8 +570,8 @@ az monitor action-group update \
   --name ag-cost-alerts-kylon \
   --resource-group rg-cost-dashboard-kylon \
   --add-action logicapp la-webhook \
-  "/subscriptions/SUBSCRIPTION_ID/resourceGroups/rg-cost-dashboard-kylon/providers/Microsoft.Logic/workflows/la-cost-alert-kylon" \
-  "LOGIC_APP_CALLBACK_URL"
+  "/subscriptions/<subscription-id>/resourceGroups/rg-cost-dashboard-kylon/providers/Microsoft.Logic/workflows/la-cost-alert-kylon" \
+  "<logic-app-callback-url>"
 ```
 
 ### 9. Budget Portal Location
@@ -648,6 +651,7 @@ terraform.tfvars
 crash.log
 crash.*.log
 .DS_Store
+.vscode/
 ```
 
 ## Cleanup
