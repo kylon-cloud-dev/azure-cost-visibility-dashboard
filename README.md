@@ -85,7 +85,7 @@ cost-dashboard-001/
 ├── main.tf
 ├── variables.tf
 ├── outputs.tf
-├── terraform.tfvars.example
+├── terraform.tfvars.example.example
 ├── README.md
 └── screenshots/
     ├── 01-vscode-project-files.png
