@@ -692,27 +692,3 @@ This will remove Terraform-managed infrastructure and help avoid unnecessary Azu
 ## Lessons Learned
 
 This project became more valuable because it did not go perfectly on the first try. Real cloud work often involves troubleshooting permissions, provider behavior, portal UI changes, command syntax, and state drift.
-
-Key lessons:
-
-- Terraform files define desired state, while Azure represents actual state.
-- If Azure creates something but Terraform does not record it, importing into state may be required.
-- Subscription-level resources may not appear inside resource groups.
-- Portal UI can differ from lab instructions.
-- Alerting workflows should be tested and documented.
-- Secrets must be redacted before uploading documentation to GitHub.
-
-## Interview Talking Points
-
-A concise way to explain this project:
-
-> I built an Azure cost visibility and alerting solution using Terraform, Azure Cost Management, Azure Monitor Action Groups, Logic Apps, Gmail notifications, Log Analytics, and Azure Workbooks. The solution tracks subscription-level spend, sends budget threshold alerts, forwards activity logs into Log Analytics, and provides a dashboard view of deployed resources. During the build, I also resolved real-world issues including a Terraform provider state problem, a subscription budget ID formatting issue, and an email connector mismatch.
-
-What this project demonstrates:
-
-- I can deploy Azure infrastructure with Terraform.
-- I understand cost governance and cloud billing visibility.
-- I can configure alert routing with Azure Monitor.
-- I can automate notifications with Logic Apps.
-- I can troubleshoot Terraform state and provider issues.
-- I know how to document cloud projects clearly and securely.
